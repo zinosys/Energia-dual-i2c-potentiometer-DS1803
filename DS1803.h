@@ -2,6 +2,9 @@
    Library for controlling the DS1803 ic with Arduino
    Tested with arduino-0022
    22/02/2010 Release 0.1
+   
+   MODIFIED by Eldon Schoop to maintain compatibility with Energia Wire library.
+
 
    Copyright and License
    ---------------------
@@ -26,7 +29,7 @@
 
 #ifndef DS1803_h
 #define DS1803_h
-#include "WProgram.h"
+// #include "WProgram.h"
 #include <Wire.h>
 
 #define WIPER_0 0xA9

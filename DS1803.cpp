@@ -2,6 +2,8 @@
    Library for controlling the DS1803 ic with Arduino
    Tested with arduino-0022
    22/02/2010 Release 0.1
+   
+   MODIFIED by Eldon Schoop to maintain compatibility with Energia Wire library.
 
    Copyright and License
    ---------------------
@@ -24,7 +26,7 @@
 */
 
 
-#include "WProgram.h"
+// #include "WProgram.h"
 #include "DS1803.h"
 #include <Wire.h>
 
@@ -42,10 +44,10 @@ void DS1803::setPot(int value,int wiper)
 {
     Wire.beginTransmission(this->addr);
     
-    if (wiper==2) Wire.send(WIPER_01);
-    else Wire.send(wiper ? WIPER_1 : WIPER_0);
+    if (wiper==2) Wire.write(WIPER_01);
+    else Wire.write(wiper ? WIPER_1 : WIPER_0);
     
-    Wire.send(value);
+    Wire.write(value);
     Wire.endTransmission();
 }
 
@@ -57,7 +59,7 @@ int8_t *DS1803::getValue()
 	
 	int k=0;
 	while (Wire.available()) {
-		values[k++]=Wire.receive();
+		values[k++]=Wire.read();
 	}
 
 	return values;
